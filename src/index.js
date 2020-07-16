@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {appstate} from './Redux/reducers/appstate' ;
+import { createStore } from 'redux';
+import {Provider} from 'react-redux';
+
+const store = createStore(appstate);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <App title={"Redux Demo"} />
+    </Provider>
+  ,
   document.getElementById('root')
 );
 

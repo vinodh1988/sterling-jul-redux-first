@@ -18,3 +18,18 @@
             }
         }
  }
+
+ export const writePeopleAction = (person)=> {
+      return async (dispatch)=>{
+        try{
+            await  Request.post("http://ec2-52-14-233-222.us-east-2.compute.amazonaws.com:8090/api/people",person)
+            dispatch(readPeopleAction())
+        }
+         catch(e){
+             alert("Unable to store")
+        
+         }
+
+
+      }
+ }

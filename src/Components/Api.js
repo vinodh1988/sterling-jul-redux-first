@@ -8,6 +8,8 @@ import "./people.css"
     useEffect(()=>{
         console.log("Component rendered")
     })
+
+    
         let code =people.map(x=><tr key={x.sno}>
             <td>{x.sno}</td>
             <td>{x.name}</td>
@@ -17,6 +19,14 @@ import "./people.css"
            const [sno, setSno] = useState("");
            const [name, setName] = useState("");
            const [city, setCity] = useState("");
+
+           function intermediate(person){
+                 setSno("")
+                 setName("")
+                 setCity("")
+                 storePerson(person)
+           }
+           
         return(
             <div> 
             <form>
@@ -40,7 +50,7 @@ import "./people.css"
                     <tr>
                         <td colSpan="2" align="center">
                     <input type="button" value="store" 
-                    onClick={()=>{storePerson({sno:sno,name: name,city: city})}} />
+                    onClick={()=>{intermediate({sno:sno,name: name,city: city})}} />
                                 
                         </td>
                     </tr>

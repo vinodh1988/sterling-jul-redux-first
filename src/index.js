@@ -4,10 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {appstate} from './Redux/reducers/appstate' ;
-import { createStore } from 'redux';
+import { createStore,applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+import { readPeopleAction } from './Redux/actions/peopleAction';
 
-const store = createStore(appstate);
+const store = createStore(appstate,applyMiddleware(thunk));
+store.dispatch(readPeopleAction());
 
 ReactDOM.render(
   <Provider store={store}>

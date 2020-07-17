@@ -4,10 +4,12 @@
 
 */
 
-export const firstReducer = (state={message : "World is So Big!!!"},action) => {
+export const firstReducer = (state={message : "World is So Big!!!",people:[]},action) => {
     switch(action.type){
          case "MESSAGE_ACTION":
-                    return {message: action.data}
+                    return {...state,message: action.data}
+         case "PEOPLE_ACTION":
+                    return {...state,people : action.data}
          default:
                     return state;
     
@@ -23,3 +25,5 @@ export const secondReducer = (state={message : "World is So Small!!"},action) =>
     
    }
 }
+
+

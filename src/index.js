@@ -6,11 +6,16 @@ import * as serviceWorker from './serviceWorker';
 import {appstate} from './Redux/reducers/appstate' ;
 import { createStore,applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
-import thunk from 'redux-thunk';
-import { readPeopleAction } from './Redux/actions/peopleAction';
+import createSagaMiddleware from 'redux-saga';
 
-const store = createStore(appstate,applyMiddleware(thunk));
-store.dispatch(readPeopleAction());
+//import thunk from 'redux-thunk';
+//import { readPeopleAction } from './Redux/actions/peopleAction';
+import { rootSaga } from './Redux/Saga/root';
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(appstate,applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
+store.dispatch({type:"PEOPLE_READ_ACTION"});
 
 ReactDOM.render(
   <Provider store={store}>

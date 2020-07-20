@@ -6,6 +6,17 @@
       }
  }
 
+//Redux Saga Logic
+
+export const writePeopleSaga= (person)=>{
+    return{
+        type: "PEOPLE_WRITE_ACTION",
+        data: person
+    }
+}
+
+ //Redux Thunk
+
  export const readPeopleAction= ()=>{
         return async (dispatch)=>{
             try{
